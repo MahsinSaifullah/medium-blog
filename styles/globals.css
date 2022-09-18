@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .form-label {
+    @apply block mb-5;
+  }
+
+  .form-span {
+    @apply text-gray-700;
+  }
+
+  .form-input-custom {
+    @apply shadow border rounded py-2 px-3 mt-1 block w-full ring-yellow-500 outline-none focus:ring;
+  }
+}
