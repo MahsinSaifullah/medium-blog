@@ -17,9 +17,9 @@ export const CommentForm: React.FC<CommentFormProps> = ({ post }) => {
 
   const onSubmit: SubmitHandler<CommentFormInput> = async (data) => {
     try {
-      await axios.post('/api/comment', JSON.stringify(data));
+      await axios.post('/api/comment', data);
     } catch (error) {
-      console.error(error);
+      console.error('---error', error);
     }
   };
 
