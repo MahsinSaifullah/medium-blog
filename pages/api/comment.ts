@@ -28,19 +28,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         email,
         comment,
       });
-    } catch (error: any) {
+    } catch (error) {
       return res
         .status(500)
         .json({ status: 500, message: 'Could not submit comment', error });
     }
 
-    return res
-      .status(200)
-      .json({
-        status: 200,
-        message: 'Comment submitted successfully',
-        data: req.body,
-      });
+    return res.status(200).json({
+      status: 200,
+      message: 'Comment submitted successfully',
+      data: req.body,
+    });
   }
 };
 

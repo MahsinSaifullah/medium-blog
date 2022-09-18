@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -9,6 +9,7 @@ interface CommentFormProps {
 }
 
 export const CommentForm: React.FC<CommentFormProps> = ({ post }) => {
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const {
     register,
     handleSubmit,
@@ -18,10 +19,23 @@ export const CommentForm: React.FC<CommentFormProps> = ({ post }) => {
   const onSubmit: SubmitHandler<CommentFormInput> = async (data) => {
     try {
       await axios.post('/api/comment', data);
+      setIsSubmitted(true);
     } catch (error) {
       console.error('---error', error);
+      setIsSubmitted(false);
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="flex flex-col p-10 my-10 bg-yellow-500 text-white max-w-2xl mx-auto">
+        <h3 className="text-3xl font-bold">
+          Thank for submitting your comment!
+        </h3>
+        <p>Once it has been approved, it will appear below!</p>
+      </div>
+    );
+  }
 
   return (
     <form
