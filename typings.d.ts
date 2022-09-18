@@ -23,3 +23,10 @@ export interface MainImage {
 export interface Slug {
   current: string;
 }
+
+export interface CommentFormInput {
+  _id: string;
+  name: string;
+  email: string;
+  comment: string;
+}

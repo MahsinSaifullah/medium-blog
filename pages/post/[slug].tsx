@@ -22,7 +22,7 @@ const PostDetails: NextPage<PostDetail> = ({ post }) => {
       />
       <PostBody post={post} />
       <hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
-      <CommentForm />
+      <CommentForm post={post} />
     </main>
   );
 };
