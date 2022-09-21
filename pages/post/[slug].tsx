@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { sanityClient, urlFor } from '../../sanity';
 import { CommentForm, Header, PostBody } from '../../components';
 import { Post } from '../../typings';
+import CommentList from '../../components/CommentList';
 
 interface PostDetailsStaticProps {
   post: Post;
@@ -23,6 +24,7 @@ const PostDetails: NextPage<PostDetail> = ({ post }) => {
       <PostBody post={post} />
       <hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
       <CommentForm post={post} />
+      <CommentList comments={post.comments} />
     </main>
   );
 };
@@ -67,6 +69,7 @@ export const getStaticProps: GetStaticProps<PostDetailsStaticProps> = async ({
           name,
           image
         },
+        'comments': *[_type == "comment" && post._ref == ^._id && approved == true],
         description,
         mainImage,
         slug,

@@ -7,6 +7,7 @@ export interface Post {
   mainImage: MainImage;
   slug: Slug;
   body: object[];
+  comments: Comment[];
 }
 
 export interface Author {
@@ -29,4 +30,20 @@ export interface CommentFormInput {
   name: string;
   email: string;
   comment: string;
+}
+
+export interface Comment {
+  _id: string;
+  _createdAt: string;
+  _rev: string;
+  _type: string;
+  _updatedAt: string;
+  approved: boolean;
+  comment: string;
+  email: string;
+  name: string;
+  post: {
+    _ref: string;
+    _type: string;
+  };
 }
